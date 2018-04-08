@@ -1,0 +1,11 @@
+php-fpm:
+/etc/php-fpm.d/www.conf
+
+php.ini:
+/etc/php.ini
+
+Nginx:
+/etc/nginx/nginx.conf
+
+Supervisor:
+/etc/supervisord.d/

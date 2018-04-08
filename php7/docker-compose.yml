@@ -1,0 +1,35 @@
+web:
+  image: docker.jingzhuan.cn/php7
+  volumes:
+    - /Users/liusongsen/Project/yidejia:/home/wwwroot
+    - /Users/liusongsen/Project/yidejia/wwwlogs:/home/wwwlogs
+  ports:
+    - "80:80"
+  command: "/usr/bin/supervisord -c /etc/supervisord.conf"
+  container_name: 'web'
+  links:
+    - mysql
+    - memcached
+    - redis
+
+mysql:
+  image: docker.jingzhuan.cn/mysql
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: '123456'
+  container_name: 'mysql'
+  command: mysqld
+
+memcached:
+  image: docker.jingzhuan.cn/memcached
+  ports:
+    - "11211:11211"
+  container_name: 'memcached'
+  command: memcached
+
+redis:
+  image: docker.jingzhuan.cn/redis
+  ports:
+    - "6379:6379"
+  container_name: 'redis'

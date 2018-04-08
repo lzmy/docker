@@ -1,0 +1,6 @@
+FROM docker.jingzhuan.cn/php7
+MAINTAINER jackzzg@gmail.com
+#COPY php.ini /etc/opt/remi/php70/php.ini
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY php-fpm.conf /etc/opt/remi/php70/php-fpm.d/www.conf
+ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
